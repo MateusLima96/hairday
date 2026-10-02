@@ -6,6 +6,7 @@ import Icon from "./components/icon"
 import UserSquare from "./assets/icons/usersquare.svg?react"
 import ButtonIcon from "./components/button-icon"
 import InputText from "./components/input-text"
+import ButtonTimeSelect from "./components/button-time-select"
 
 export default function App() {
 
@@ -38,6 +39,16 @@ export default function App() {
             <InputText
                 icon={UserSquare}
                 placeholder="Nome do Cliente"/>
+        </div>
+
+          <div className="mt-6 flex gap-2">
+            <ButtonTimeSelect>
+                09:00
+            </ButtonTimeSelect>
+
+            <ButtonTimeSelect variant="secondary">
+                10:00
+            </ButtonTimeSelect>
         </div>
     </Container>
   )
