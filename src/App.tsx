@@ -3,7 +3,9 @@ import Container from "./components/container"
 import Text from "./components/text"
 import TrashIcon from "./assets/icons/trash.svg?react"
 import Icon from "./components/icon"
+import UserSquare from "./assets/icons/usersquare.svg?react"
 import ButtonIcon from "./components/button-icon"
+import InputText from "./components/input-text"
 
 export default function App() {
 
@@ -29,6 +31,13 @@ export default function App() {
 
         <div className="mt-6">
             <ButtonIcon icon={TrashIcon} />
+            <ButtonIcon icon={UserSquare} />
+        </div>
+
+        <div className="mt-6">
+            <InputText
+                icon={UserSquare}
+                placeholder="Nome do Cliente"/>
         </div>
     </Container>
   )
