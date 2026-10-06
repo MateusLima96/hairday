@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const buttonTImeSelectVariants = cva(`
+export const buttonTimeSelectVariants = cva(`
     flex items-center justify-center cursor-pointer
     transtion border rounded-lg
 `, {
@@ -25,7 +25,7 @@ export const buttonTImeSelectVariants = cva(`
             md: "h-10 w-fit max-w-19.5 py-2 px-5"
         },
         disabled: {
-            true: 'opacity-50 pointer-events-none'
+            true: 'opacity-50 pointer-events-none bg-transparent'
         }
     },
     defaultVariants: {
@@ -39,7 +39,7 @@ export const buttonTImeSelectVariants = cva(`
 
 interface ButtonTimeSelectProps 
     extends Omit<React.ComponentProps<"button">, 'size' | 'disabled'>, 
-    VariantProps<typeof buttonTImeSelectVariants> {}
+    VariantProps<typeof buttonTimeSelectVariants> {}
 
 
 export default function ButtonTimeSelect({
@@ -49,9 +49,9 @@ export default function ButtonTimeSelect({
     className,
     children,
     ...props
-}): ButtonTimeSelectProps {
+}: ButtonTimeSelectProps) {
 
-    return ( <button className={buttonTImeSelectVariants({
+    return ( <button className={buttonTimeSelectVariants({
             variant,
             size, 
             disabled, 
@@ -59,8 +59,8 @@ export default function ButtonTimeSelect({
             {...props}>
            
             <Text
-                variant="text-md"
-                color={variant === "secondary" ? "yellow-base" : "gray-200"}
+                color={
+                    variant === "secondary" ? "yellow-base" : "gray-200"}
                 >
                 {children}
             </Text>

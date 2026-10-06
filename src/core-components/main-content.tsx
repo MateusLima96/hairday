@@ -6,7 +6,13 @@ import { cx } from "class-variance-authority"
 interface MainContentProps extends React.ComponentProps<"main">{}
 
 export default function MainContent({children, className, ...props}: MainContentProps) {
-    return <main className={cx("mt-4 md:mt-8", className)} {...props}>
+    return <main className={cx(`
+        relative p-3
+        flex gap-3
+        flex-col md:flex-row
+        max-w-360
+        mx-auto
+    `, className)} {...props}>
         {children}
     </main>
 

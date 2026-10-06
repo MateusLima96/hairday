@@ -54,7 +54,7 @@ export default function inputText({
     ...props
 }: InputTextProps) {
     return (
-        <div
+        <label
             className={cx(
                 inputTextVariants({ size, disabled }),
                 className
@@ -74,6 +74,6 @@ export default function inputText({
                 )}
                 {...props}
             />
-        </div>
+        </label>
     );
 }

@@ -40,7 +40,7 @@ export default function Button({
     className,
     children,
     ...props
-}): ButtonProps {
+}: ButtonProps) {
     return ( <button className={buttonVariants({
             variant,
             size, 

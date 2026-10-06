@@ -1,8 +1,10 @@
-import Container from "../components/container";
+import AsideScheduler from "../core-components/aside-scheduler";
 
 
 export default function PageHome() {
-    return <Container className="bg-gray-100" as="article">
-        Home Page
-    </Container>
+    return (
+        <>
+            <AsideScheduler />
+        </>
+    )
 }
