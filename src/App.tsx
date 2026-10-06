@@ -1,12 +1,15 @@
 import Button from "./components/button"
 import Container from "./components/container"
 import Text from "./components/text"
-import TrashIcon from "./assets/icons/trash.svg?react"
 import Icon from "./components/icon"
-import UserSquare from "./assets/icons/usersquare.svg?react"
-import ButtonIcon from "./components/button-icon"
 import InputText from "./components/input-text"
 import ButtonTimeSelect from "./components/button-time-select"
+import ButtonDateSelect from "./components/button-date-select"
+import ButtonIcon from "./components/button-icon"
+
+import TrashIcon from "./assets/icons/trash.svg?react"
+import UserSquareIcon from "./assets/icons/usersquare.svg?react"
+
 
 export default function App() {
 
@@ -32,12 +35,12 @@ export default function App() {
 
         <div className="mt-6">
             <ButtonIcon icon={TrashIcon} />
-            <ButtonIcon icon={UserSquare} />
+            <ButtonIcon icon={UserSquareIcon} />
         </div>
 
         <div className="mt-6">
             <InputText
-                icon={UserSquare}
+                icon={UserSquareIcon}
                 placeholder="Nome do Cliente"/>
         </div>
 
@@ -49,6 +52,14 @@ export default function App() {
             <ButtonTimeSelect variant="secondary">
                 10:00
             </ButtonTimeSelect>
+
+            <ButtonTimeSelect disabled={true}>
+                10:00
+            </ButtonTimeSelect>
+        </div>
+
+        <div className="mt-6">
+            <ButtonDateSelect  />
         </div>
     </Container>
   )
