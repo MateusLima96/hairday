@@ -13,6 +13,7 @@ export const textVariants = cva("font-sans", {
             "text-sm-bold": "text-sm leading-6 font-bold"
         },
         color: {
+            "gray-100": "text-gray-100",
             "gray-300": "text-gray-300",
             "gray-200": "text-gray-200",
             "gray-500": "text-gray-500",

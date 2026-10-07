@@ -2,6 +2,7 @@ import React from "react"
 import { cva, cx, type VariantProps } from "class-variance-authority"
 import Icon from "./icon";
 import { textVariants } from "./text";
+import { getToday } from "../helpers/date";
 
 import CalendarIcon from "../assets/icons/calendar.svg?react"
 import CaretDownIcon from "../assets/icons/caretdown.svg?react"
@@ -10,7 +11,7 @@ import CaretDownIcon from "../assets/icons/caretdown.svg?react"
 export const buttonDateSelectVariants = cva(`
         flex items-center cursor-pointer
         transition border
-        rounded-lg
+        rounded-xl
         bg-transparent
         border-gray-500
         focus-within:border-yellow-dark
@@ -18,6 +19,7 @@ export const buttonDateSelectVariants = cva(`
 `, {
     variants: {
         size: {
+            sm: "w-full max-w-43.5 h-14 p-3",
             md: "w-full max-w-85 h-12 p-3"
         },
         disabled: {
@@ -55,16 +57,6 @@ interface ButtonDateSelectProps
         icon?: React.ComponentProps<typeof Icon>["svg"]
     }
 
-
-// Data de hoje no formato "AAAA-MM-DD", que é o formato que o input date espera
-function getToday() {
-    const today = new Date()
-    const year = today.getFullYear()
-    const month = String(today.getMonth() + 1).padStart(2, "0")
-    const day = String(today.getDate()).padStart(2, "0")
-
-    return `${year}-${month}-${day}`
-}
 
 export default function ButtonDateSelect({
     size,

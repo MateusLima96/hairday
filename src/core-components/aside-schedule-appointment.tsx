@@ -6,7 +6,7 @@ import TimePeriodsSelect from "./time-periods-select"
 import UserSquareIcon from "../assets/icons/usersquare.svg?react"
 import Button from "../components/button"
 
-export default function AsideScheduler () {
+export default function AsideScheduleAppointment () {
 
 
     return (
@@ -18,9 +18,9 @@ export default function AsideScheduler () {
             ">
             <div className="space-y-1 w-full">
                  <Text as="h2" variant="title-lg-bold" className="text-white">
-                     Agende um Atendimento
+                     Agende um atendimento
                  </Text>
-                 <Text variant="title-sm-bold">Selecione data, horário e informe o nome do cliente para criar o agendamento</Text>
+                 <Text variant="text-sm">Selecione data, horário e informe o nome do cliente para criar o agendamento</Text>
             </div>
             <form className="space-y-8">
                 <label className="flex flex-col gap-2 w-full">
