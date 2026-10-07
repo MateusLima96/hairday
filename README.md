@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# Hairday
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação de agendamento de cortes de cabelo, desenvolvida como desafio da [Rocketseat](https://www.rocketseat.com.br/). Com ela é possível agendar atendimentos escolhendo data, horário e nome do cliente, além de consultar e cancelar os agendamentos de cada dia.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Agendar atendimento**: selecione a data, um horário disponível e informe o nome do cliente.
+- **Horários por período**: os horários são organizados em Manhã (09h–12h), Tarde (13h–18h) e Noite (19h–21h).
+- **Bloqueio de horários**: horários já agendados na data escolhida, ou que já passaram, ficam indisponíveis.
+- **Agenda do dia**: consulte os agendamentos de qualquer data, agrupados por período e ordenados por horário.
+- **Cancelar agendamento**: remova um agendamento diretamente da agenda.
+- **Persistência local**: os agendamentos ficam salvos no `localStorage` do navegador (chave `hairday:appointments`).
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) com [React Compiler](https://react.dev/learn/react-compiler)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [class-variance-authority](https://cva.style/) para variantes de componentes
+- [React Router](https://reactrouter.com/)
+- [use-local-storage](https://github.com/nas5w/use-local-storage)
+- [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr) para importar SVGs como componentes
 
-## Expanding the ESLint configuration
+## Como executar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pré-requisitos: [Node.js](https://nodejs.org/) e [pnpm](https://pnpm.io/).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Instalar as dependências
+pnpm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+# Iniciar o servidor de desenvolvimento
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+A aplicação ficará disponível em `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Comando        | Descrição                                      |
+| -------------- | ---------------------------------------------- |
+| `pnpm dev`     | Inicia o servidor de desenvolvimento           |
+| `pnpm build`   | Verifica os tipos e gera o build de produção   |
+| `pnpm preview` | Serve localmente o build de produção           |
+| `pnpm lint`    | Executa o ESLint                               |
 
+## Rotas
+
+| Rota          | Descrição                                           |
+| ------------- | --------------------------------------------------- |
+| `/`           | Página principal com o formulário e a agenda        |
+| `/components` | Vitrine dos componentes de UI usados no projeto     |
+
+## Estrutura do projeto
+
+```
+src/
+├── assets/           # Ícones e imagens (SVG)
+├── components/       # Componentes de UI reutilizáveis (Button, Text, InputText...)
+├── core-components/  # Componentes de domínio (formulário de agendamento, agenda...)
+├── contexts/         # Contexto e provider dos agendamentos
+├── helpers/          # Funções utilitárias de data
+├── hooks/            # Hooks customizados (useAppointments, useLocalStorage)
+├── models/           # Tipos do domínio (Appointment)
+├── pages/            # Layout e páginas da aplicação
+├── App.tsx           # Definição das rotas
+└── main.tsx          # Ponto de entrada
 ```
