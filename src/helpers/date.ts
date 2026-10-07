@@ -7,3 +7,8 @@ export function getToday() {
 
     return `${year}-${month}-${day}`
 }
+
+// Indica se o horário "HH:MM" da data "AAAA-MM-DD" já passou
+export function isPastTime(date: string, time: string) {
+    return new Date(`${date}T${time}`) <= new Date()
+}

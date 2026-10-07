@@ -1,14 +1,9 @@
 import Icon from "../components/icon"
 import Text from "../components/text"
 
-import TrashIcon from "../assets/icons/trash.svg?react"
+import type { Appointment } from "../models/appointment"
 
-export interface Appointment {
-    id: string
-    date: string
-    time: string
-    client: string
-}
+import TrashIcon from "../assets/icons/trash.svg?react"
 
 interface AppointmentsPeriodProps {
     icon: React.ComponentProps<typeof Icon>["svg"]

@@ -1,7 +1,8 @@
 import React from "react"
 import ButtonDateSelect from "../components/button-date-select"
 import Text from "../components/text"
-import AppointmentsPeriod, { type Appointment } from "./appointments-period"
+import AppointmentsPeriod from "./appointments-period"
+import useAppointments from "../hooks/use-appointments"
 import { getToday } from "../helpers/date"
 
 import SunHorizonIcon from "../assets/icons/sunhorizon.svg?react"
@@ -17,13 +18,11 @@ const periods = [
 
 export default function ListAppointments() {
     const [selectedDate, setSelectedDate] = React.useState(getToday())
-    const [appointments, setAppointments] = React.useState<Appointment[]>([])
+    const { appointments, removeAppointment } = useAppointments()
 
-    const appointmentsOfDay = appointments.filter((appointment) => appointment.date === selectedDate)
-
-    function handleRemoveAppointment(id: string) {
-        setAppointments((current) => current.filter((appointment) => appointment.id !== id))
-    }
+    const appointmentsOfDay = appointments
+        .filter((appointment) => appointment.date === selectedDate)
+        .sort((a, b) => a.time.localeCompare(b.time))
 
     return (
         <div className="w-full py-20">
@@ -54,7 +53,7 @@ export default function ListAppointments() {
                                 const hour = Number(appointment.time.split(":")[0])
                                 return hour >= period.start && hour <= period.end
                             })}
-                            onRemove={handleRemoveAppointment}
+                            onRemove={removeAppointment}
                         />
                     ))}
                 </div>

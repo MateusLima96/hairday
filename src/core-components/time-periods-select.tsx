@@ -18,6 +18,7 @@ interface TimePeriodsSelectProps {
     periods?: TimePeriod[]
     disabled?: boolean
     selectedTime?: string
+    unavailableTimes?: string[]
     onSelectTime?: (time: string) => void
 }
 
@@ -25,6 +26,7 @@ export default function TimePeriodsSelect({
     periods = defaultTimePeriods,
     disabled = true,
     selectedTime,
+    unavailableTimes = [],
     onSelectTime,
 }: TimePeriodsSelectProps) {
     return (
@@ -40,7 +42,7 @@ export default function TimePeriodsSelect({
                             <ButtonTimeSelect
                                 key={time}
                                 type="button"
-                                disabled={disabled}
+                                disabled={disabled || unavailableTimes.includes(time)}
                                 variant={selectedTime === time ? "secondary" : "primary"}
                                 onClick={() => onSelectTime?.(time)}
                             >
